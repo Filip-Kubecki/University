@@ -1,0 +1,157 @@
+/*Color chart:
+#1F2229 - background gray
+#EFF1F3 - text white
+
+*/
+
+.table-view .scroll-bar * {
+    -fx-min-width: 0;
+    -fx-pref-width: 0;
+    -fx-max-width: 0;
+
+    -fx-min-height: 0;
+    -fx-pref-height: 0;
+    -fx-max-height: 0;
+}
+
+.table-view{
+    -fx-background-color: #262a33;
+    -fx-text-fill: #EFF1F3;
+    -fx-font-family: "Roboto Thin";
+}
+
+.table-view .column-header,
+.table-view .column-header .filler,
+.table-view .column-header-background .filler {
+    -fx-background-color: #1F2229;
+    -fx-text-fill: #EFF1F3;
+    -fx-font-family: "Roboto Thin";
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #EFF1F3;
+    -fx-font-family: "Roboto Thin";
+    -fx-font-weight: bold;
+}
+
+.table-view .table-cell{
+    -fx-border-color: #1F2229;
+    -fx-text-fill: #EFF1F3;
+    -fx-font-family: "Roboto Thin";
+}
+.table-row-cell:hover {
+    -fx-background-color: #1F2229;
+    -fx-text-fill: #EFF1F3;
+    -fx-font-family: "Roboto Thin";
+}
+.table-row-cell:odd{
+    -fx-background-color: #1F2229;
+    -fx-text-fill: #EFF1F3;
+    -fx-font-family: "Roboto Thin";
+}
+.table-row-cell:even{
+    -fx-background-color: #1F2229;
+    -fx-text-fill: #EFF1F3;
+    -fx-font-family: "Roboto Thin";
+}
+
+
+.background-color{
+    -fx-background-color: #1F2229;
+    /*-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #1F2229, #651139);*/
+}
+
+.text-h1{
+    -fx-text-fill: #EFF1F3;
+    -fx-font-family: "Roboto Thin";
+    -fx-font-size: 24;
+}
+
+.text-neutral{
+    -fx-text-fill: #EFF1F3;
+    -fx-font-family: "Roboto Thin";
+    -fx-font-size: 18;
+}
+
+.chart{
+    -fx-background-color: #1F2229;
+    -fx-legend-visible: false;
+}
+
+.chart-plot-background {
+    -fx-background-color: #1F2229;
+}
+
+.button{
+    -fx-background-color:  #1F2229;
+    -fx-background-radius-radius: 10;
+
+}
+
+.button:hover{
+    -fx-background-color: #006359;
+    -fx-background-radius-radius: 10;
+}
+
+.container{
+    -fx-background-color: #262a33;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+}
+
+.exitButton{
+    -fx-background-color: #262a33;
+    -fx-font-family: "Calibri Light";
+    -fx-text-fill: #a3a3a3;
+    -fx-font-size: 18;
+}
+.exitButton:hover{
+    -fx-background-color: #e81123;
+    -fx-font-family: "Calibri Light";
+    -fx-text-fill: #fffcfc;
+    -fx-font-size: 18;
+}
+.test{
+    -fx-background-color: #323352;
+}
+
+.check-box .box {
+    -fx-background-color: #262a33;
+    -fx-background-radius: 7;
+    -fx-border-radius: 7;
+    -fx-border-color: #b9b9b9;
+    -fx-font-family: "Calibri Light";
+}
+
+.check-box .box:hover {
+    -fx-background-color: #262a33;
+    -fx-background-radius: 7;
+    -fx-border-radius: 7;
+    -fx-border-color: #009688;
+    -fx-font-family: "Calibri Light";
+}
+
+.check-box:selected .mark {
+    -fx-background-color: #262a33;
+    -fx-background-radius: 7;
+    -fx-border-radius: 0;
+    -fx-border-color: none;
+    -fx-font-family: "Calibri Light";
+}
+
+.check-box:selected .box {
+    -fx-background-color: #009688;
+    -fx-border-radius: 7;
+    -fx-border-color: #009688;
+    -fx-background-radius: 7;
+    -fx-font-family: "Calibri Light";
+}
+
+.default-color0.chart-series-line { -fx-stroke: #5B5F97; }
+.default-color0.chart-line-symbol { -fx-background-color: #5B5F97, white; }
+
+.default-color1.chart-series-line { -fx-stroke: #ffc145; }
+.default-color1.chart-line-symbol { -fx-background-color: #ffc145, white; }
+
+.default-color2.chart-series-line { -fx-stroke: #009688; }
+.default-color2.chart-line-symbol { -fx-background-color: #009688, white; }

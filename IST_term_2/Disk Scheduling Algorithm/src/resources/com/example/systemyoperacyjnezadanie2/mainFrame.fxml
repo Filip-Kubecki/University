@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" styleClass="background-color" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.systemyoperacyjnezadanie2.Controler">
+   <top>
+      <HBox prefHeight="41.0" prefWidth="1200.0" style="-fx-background-color: #262a33;" BorderPane.alignment="CENTER">
+         <children>
+            <Label prefHeight="70.0" prefWidth="470.0" style="-fx-font-size: 14; -fx-background-color: #262a33;" text="Disc Scheduling Algorithms" textAlignment="CENTER" textFill="#647493" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font name="Times New Roman" size="18.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="5.0" right="15.0" />
+               </HBox.margin>
+               <styleClass>
+                  <String fx:value="text-h1" />
+                  <String fx:value="background-color" />
+               </styleClass>
+               <padding>
+                  <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
+               </padding>
+            </Label>
+            <HBox prefHeight="114.0" prefWidth="716.0" />
+            <Button mnemonicParsing="false" onAction="#exit" prefWidth="58.0" styleClass="exitButton" text="x">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+               </padding>
+            </Button>
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="15.0" />
+         </BorderPane.margin>
+      </HBox>
+   </top>
+   <left>
+      <VBox prefHeight="600.0" prefWidth="130.0" styleClass="container" BorderPane.alignment="CENTER">
+         <children>
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#FCFS" prefHeight="30.0" prefWidth="147.0" text="FCFS">
+               <VBox.margin>
+                  <Insets bottom="15.0" left="5.0" right="5.0" top="15.0" />
+               </VBox.margin>
+               <styleClass>
+                  <String fx:value="button" />
+                  <String fx:value="text-neutral" />
+               </styleClass>
+            </Button>
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#SSTF" prefHeight="30.0" prefWidth="147.0" text="SSTF">
+               <VBox.margin>
+                  <Insets bottom="15.0" left="5.0" right="5.0" top="15.0" />
+               </VBox.margin>
+               <styleClass>
+                  <String fx:value="button" />
+                  <String fx:value="text-neutral" />
+               </styleClass>
+            </Button>
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#SCAN" prefHeight="30.0" prefWidth="147.0" text="SCAN">
+               <VBox.margin>
+                  <Insets bottom="15.0" left="5.0" right="5.0" top="15.0" />
+               </VBox.margin>
+               <styleClass>
+                  <String fx:value="button" />
+                  <String fx:value="text-neutral" />
+               </styleClass>
+            </Button>
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#CSCAN" prefHeight="30.0" prefWidth="147.0" text="C-SCAN">
+               <VBox.margin>
+                  <Insets bottom="15.0" left="5.0" right="5.0" top="15.0" />
+               </VBox.margin>
+               <styleClass>
+                  <String fx:value="button" />
+                  <String fx:value="text-neutral" />
+               </styleClass>
+            </Button>
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#EDF" prefHeight="30.0" prefWidth="147.0" text="EDF">
+               <VBox.margin>
+                  <Insets bottom="15.0" left="5.0" right="5.0" top="15.0" />
+               </VBox.margin>
+               <styleClass>
+                  <String fx:value="button" />
+                  <String fx:value="text-neutral" />
+               </styleClass>
+            </Button>
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#FDSCAN" prefHeight="30.0" prefWidth="147.0" text="FD-SCAN">
+               <VBox.margin>
+                  <Insets bottom="15.0" left="5.0" right="5.0" top="15.0" />
+               </VBox.margin>
+               <styleClass>
+                  <String fx:value="button" />
+                  <String fx:value="text-neutral" />
+               </styleClass>
+            </Button>
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="15.0" left="10.0" right="10.0" top="10.0" />
+         </BorderPane.margin>
+      </VBox>
+   </left>
+   <bottom>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="102.0" prefWidth="161.0" styleClass="container">
+               <children>
+                  <Label styleClass="text-neutral" text="Disc Size">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin></Label>
+                  <TextField fx:id="discSize" prefHeight="25.0" prefWidth="100.0" promptText="text" style="-fx-background-color: #1F2229;" text="200">
+                     <VBox.margin>
+                        <Insets bottom="15.0" top="5.0" />
+                     </VBox.margin>
+                     <styleClass>
+                        <String fx:value="text-neutral" />
+                        <String fx:value="container" />
+                     </styleClass></TextField>
+               </children>
+               <padding>
+                  <Insets left="10.0" right="10.0" />
+               </padding>
+               <HBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox prefHeight="102.0" prefWidth="163.0" styleClass="container">
+               <children>
+                  <Label styleClass="text-neutral" text="Request Size">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextField fx:id="requestSize" prefHeight="25.0" prefWidth="100.0" promptText="text" style="-fx-background-color: #1F2229;" text="200">
+                     <VBox.margin>
+                        <Insets bottom="15.0" top="5.0" />
+                     </VBox.margin>
+                     <styleClass>
+                        <String fx:value="text-neutral" />
+                        <String fx:value="container" />
+                     </styleClass>
+                  </TextField>
+               </children>
+               <padding>
+                  <Insets left="10.0" right="10.0" />
+               </padding>
+               <HBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </HBox.margin>
+            </VBox>
+         </children>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </HBox>
+   </bottom>
+   <right>
+      <VBox prefHeight="498.0" prefWidth="186.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="70.0" prefWidth="160.0" styleClass="container">
+               <children>
+                  <Label styleClass="text-neutral" text="Total Time:" textAlignment="CENTER">
+                     <VBox.margin>
+                        <Insets left="5.0" />
+                     </VBox.margin></Label>
+                  <Label fx:id="totalTime" minWidth="100.0" style="-fx-background-radius: 10;">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </VBox.margin>
+                     <styleClass>
+                        <String fx:value="text-neutral" />
+                        <String fx:value="background-color" />
+                     </styleClass>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding></Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
+               </VBox.margin>
+            </VBox>
+            <VBox prefHeight="70.0" prefWidth="160.0" styleClass="container">
+               <children>
+                  <Label styleClass="text-neutral" text="All Head Movements:" textAlignment="CENTER">
+                     <VBox.margin>
+                        <Insets left="5.0" />
+                     </VBox.margin></Label>
+                  <Label fx:id="allHeadMove" minWidth="100.0" style="-fx-background-radius: 10;">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </VBox.margin>
+                     <styleClass>
+                        <String fx:value="text-neutral" />
+                        <String fx:value="background-color" />
+                     </styleClass>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding></Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
+               </VBox.margin>
+            </VBox>
+            <VBox prefHeight="70.0" prefWidth="160.0" styleClass="container">
+               <children>
+                  <Label styleClass="text-neutral" text="Killed Requests:" textAlignment="CENTER">
+                     <VBox.margin>
+                        <Insets left="5.0" />
+                     </VBox.margin></Label>
+                  <Label fx:id="killedRequests" minWidth="100.0" style="-fx-background-radius: 10;">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </VBox.margin>
+                     <styleClass>
+                        <String fx:value="text-neutral" />
+                        <String fx:value="background-color" />
+                     </styleClass>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding></Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
+               </VBox.margin>
+            </VBox>
+            <VBox prefHeight="62.0" prefWidth="177.0" styleClass="container">
+               <children>
+                  <CheckBox fx:id="preGenerate" mnemonicParsing="false" onAction="#preGenerateData" prefHeight="27.0" prefWidth="145.0" styleClass="text-neutral" text="Pre generate">
+                     <VBox.margin>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                     </VBox.margin>
+                  </CheckBox>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <TableView fx:id="dataTable" prefHeight="190.0" prefWidth="188.0" stylesheets="@styles.css">
+                    <columns>
+                      <TableColumn fx:id="algName" prefWidth="74.39995747804642" resizable="false" text="Algorithms" />
+                      <TableColumn fx:id="allHeadMoves" prefWidth="102.4000244140625" resizable="false" text="Head Moves" />
+                    </columns>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </TableView>
+               </children>
+            </VBox>
+         </children>
+         <padding>
+            <Insets bottom="3.0" left="5.0" right="5.0" top="3.0" />
+         </padding>
+         <BorderPane.margin>
+            <Insets right="5.0" />
+         </BorderPane.margin></VBox>
+   </right>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <LineChart fx:id="dataChart" prefHeight="498.0" prefWidth="949.0" stylesheets="@styles.css">
+              <xAxis>
+                <NumberAxis side="TOP" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </LineChart>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>
