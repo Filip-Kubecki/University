@@ -1,0 +1,161 @@
+
+% Preamble
+\documentclass[11pt]{article}
+
+% Packages
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{ragged2e}
+\usepackage [utf8]{inputenc}
+\usepackage{blindtext}
+\usepackage{wrapfig}
+\usepackage{xcolor}
+\usepackage {polski}
+\usepackage{multicol}
+\usepackage[a4paper, total={5.7in, 8in}]{geometry}
+\usepackage{graphicx}
+\usepackage{amstex}
+\usepackage{csvsimple}
+\usepackage{changepage}
+\usepackage{enumitem}
+\usepackage[english]{babel}
+\usepackage{biblatex}
+\usepackage{caption}
+\usepackage{indentfirst}
+\usepackage{epstopdf-base}
+
+% Document
+\begin{document}
+%    Nagłówek
+    \begin{flushleft}
+        Filip Krauz-Damski 267 681 \hfill Data wykonania ćwiczenia:\\
+        Filip Kubecki 272 655 \hfill 22 kwietnia 2024r\\
+        \hfill Data sporządzenia sprawozdania:\\
+        Grupa: Pon 13:15 \hfill 28 kwietnia 2024r\\
+    \end{flushleft}
+    \begin{center}
+        \Large\textbf{Ćwiczenie 6.}\\
+        \textbf{Pomiary temperatury}
+    \end{center}
+    \vspace{2cm}
+%    Treść
+    \section{Spis przyrządów}
+    \par{
+        Do wykonania ćwiczenia wykorzystano:
+        \begin{itemize}
+            \setlength\itemsep{0em}
+            \item[-] Multimetr cyfrowy Agilent 34401A
+            \item[-] Stolik temperaturowy (specyfikacja nieznana)
+        \end{itemize}
+    }
+    
+    \section{Przebieg i cele doświadczenia}
+    Doświadczenie polegało kolejno na:
+    \begin{itemize}
+        \setlength\itemsep{0em}
+        \item Wyznaczeniu charakterystyki napięciowo temperaturowej termopary przez podgrzewanie jej stolikiem temperaturowym,
+        \item Wyliczenie temperatury obudowy rezystora HS50 na zmierzonej rezystancji czujnika PT-100 znajdującego się na jego obudowie,
+        \item Wyznaczeniu zależności temperatury obudowy rezystora HS50 od mocy wydzielonej przez ten rezystor,
+    \end{itemize}
+
+    \section{Wyniki pomiarów}
+    \subsection*{Część 1 - Charakterystyka termopary}
+    \begin{center}
+        \csvreader[tabular = |c|c|,
+            table head = \hline  \textbf{T[${^\circ}C$]} & \textbf{U[mV]}  \\\hline,
+%            table foot = \hline,
+            late after line = \\\hline
+        ]{Dane/Dane1.csv}{}{
+            \csvcoli & \csvcolii
+        }
+    \end{center}
+    \subsection*{Część 2 - Charakterystyka mocy od temperatury rezystora HS50}
+    \begin{center}
+        \csvreader[tabular = |c|c|c|c|c|,
+            table head = \hline  \textbf{I[A]} & \textbf{U[V]} & \textbf{\boldmath$R_{PT100}$[$\Omega$]} & \textbf{\boldmath$T_{PT100}$[${^\circ}C$]} & \textbf{\boldmath$P_{HS50}$[W]}  \\\hline,
+%            table foot = \hline,
+            late after line = \\\hline
+        ]{Dane/Dane2.csv}{}{
+            \csvcoli & \csvcolii & \csvcoliii & \csvcoliv & \csvcolv
+        }
+    \end{center}
+    
+    \section{Analiza wyników}
+    \subsection*{Część 1 - Charakterystyka termopary}
+    Charakterystyka napięcia termopary od temperatury mierzonej została przedstawiona na wykresie nr 1 dołączonym do sprawozdania. Doświadczenie zaczęto od temperatury
+    0.7 [${^\circ}C$] ponieważ stolik temperaturowy nie pozwalał na osiągnięcie niższej temperatury.
+
+    \subsection*{Część 2 - Charakterystyka mocy od temperatury rezystora HS50}
+   \noindent Moc wydzieloną na rezystorze HS50 obliczono ze wzoru:
+    \begin{gather*}
+        P=U\cdot I
+    \end{gather*}
+    {\footnotesize
+        \begin{itemize}
+            \setlength\itemsep{0em}
+            \item[] \textbf{P} - moc wydzielona na rezystorze,
+            \item[] \textbf{I} - prąd płynący przez rezystor,
+            \item[] \textbf{U} - napięcie na zaciskach rezystora,
+        \end{itemize}}
+    \noindent Przykład moc wydzielona przy napięciu 1.5 [V]:
+    \begin{gather*}
+        P=1.5 [V]\cdot 0.65 [A]=0.975 [W]
+    \end{gather*}
+    \noindent Temperaturę zmierzoną termoparą PT100 wyliczono przy pomocy wzoru:
+    \begin{gather*}
+        T=\frac{1}{\alpha}(\frac{R}{100[\Omega]}-1)
+    \end{gather*}
+    {\footnotesize
+        \begin{itemize}
+            \setlength\itemsep{0em}
+            \item[] \textbf{T} - temperatura mierzona,
+            \item[] \textbf{R} - rezystancja termopary,
+            \item[] \textbf{$\alpha$} - współczynnik TWR termopary PT100 wynoszący $0.00385[K^{-1}]$,
+        \end{itemize}}
+    \noindent Przykładowo dla zmierzonej rezystancji termopary PT100 równej 118.901[$\Omega$]:
+    \begin{gather*}
+        T=\frac{1}{0.00385[{^\circ}C^{-1}]}(\frac{118.901[\Omega]}{100[\Omega]}-1)=49.094[{^\circ}C]
+    \end{gather*}
+    Charakterystyka temperatury obudowy rezystora HS50 od mocy wydzielonej na tym rezystorze została przedstawiona na wykresie nr 2 dołączonym do sprawozdania.
+    \newpage
+    \section{Uwagi i wnioski}
+    Na podstawie wykresu nr 1 możemy zauważyć że charakterystyka zależności napięcia na termoparze od temperatury jest praktycznie liniowa. Pokrywałoby się to z
+    charakterystykami napięciowo temperaturowymi większości termopar które na całym zakresie są bliskie bycia liniowymi.\\
+    Na podstawie wykresu nr 2 możemy zauważyć że charakterystyka zależności temperatury obudowy HS50 od mocy wydzielonej na tym rezystorze nie jest liniowa
+    a przypomina bardziej charakterystykę wielomianową stopnia 2. Wynika to z tego że wraz ze wzrostem temperatury na obudowie rezystora wzrasta różnica temperatur między
+    obudową a otoczeniem. Powoduję to szybszą wymianą temperatury radiatora rezystora z otoczeniem. Obrazuje to zależność:
+    \begin{gather*}
+        Q=-kA\frac{\Delta T}{\Delta x}
+    \end{gather*}
+    {\footnotesize
+        \begin{itemize}
+            \setlength\itemsep{0em}
+            \item[] \textbf{Q} - strumień ciepła/prędkość przepływu ciepła,
+            \item[] \textbf{k} - przewodność cieplna materiału,
+            \item[] \textbf{A} - pole powierzchni oddającej ciepło,
+            \item[] \textbf{$\Delta T$} - różnica temperatury,
+            \item[] \textbf{$\Delta x$} - grubość materiału przewodzącego ciepło,
+        \end{itemize}}
+    Wraz ze wzrastającą temperaturą, rosnąć będzie różnica temperatur co powoduje zwiększenie strumienia ciepła czego następstwem jest coraz większe tempo rośnięcia mocy
+    pobieranej przez rezystor wraz ze wzrostem różnicy temperatury rezystora a temperatury otoczenia.\\
+    \indent Dodatkowo można zauważyć że na wykresie nr 2 ostatni pomiar łamie powyższe przewidywanie. Jest to spowodowane zbyt krótkim czasem poświęconym
+    na ustabilizowanie temperatury (wynikało to ze zbliżania się konica zajęć - eksperyment należało już przerwać).
+
+
+    %Bibliografia
+    \vfill
+    \footnotesize
+    \begin{thebibliography}{9}
+        \bibitem{texbook1}
+        https://wzn.pwr.edu.pl/materialy-dydaktyczne/metrologia-elektroniczna
+        \bibitem{texbook3}
+        https://en.wikipedia.org/wiki/Thermal\_conductivity\_and\_resistivity
+        \bibitem{texbook4}
+        https://en.wikipedia.org/wiki/Rate\_of\_heat\_flow
+        \bibitem{texbook5}
+        https://en.wikipedia.org/wiki/Temperature\_coefficient
+        \bibitem{texbook6}
+        https://www.dracal.com/en/what\-is\-a\-pt100\-rtd\-sensor
+    \end{thebibliography}
+
+\end{document}

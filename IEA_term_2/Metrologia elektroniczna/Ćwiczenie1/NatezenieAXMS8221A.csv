@@ -1,0 +1,6 @@
+Zakres pomiarowy,Rozdzielczość,Dokładność,Wyniki Pomiarów(mA),Niepewność bezwzględna,Niepewność względna
+200uA,0.008,0.0001,...,...,...
+2mA,0.008,0.001,...,...,...
+20mA,0.008,0.01,9.91,0.089,0.90
+200mA,0.012,0.1,9.8,0.22,2.2
+10A,0.02,50,10,50,502

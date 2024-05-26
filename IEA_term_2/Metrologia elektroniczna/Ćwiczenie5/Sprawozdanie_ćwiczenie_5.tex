@@ -1,0 +1,348 @@
+
+% Preamble
+\documentclass[11pt]{article}
+
+% Packages
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{ragged2e}
+\usepackage [utf8]{inputenc}
+\usepackage{blindtext}
+\usepackage{wrapfig}
+\usepackage{xcolor}
+\usepackage {polski}
+\usepackage{multicol}
+\usepackage[a4paper, total={5.7in, 8in}]{geometry}
+\usepackage{graphicx}
+\usepackage{amstex}
+\usepackage{csvsimple}
+\usepackage{changepage}
+\usepackage{enumitem}
+\usepackage[english]{babel}
+\usepackage{biblatex}
+\usepackage{caption}
+\usepackage{indentfirst}
+\usepackage{epstopdf-base}
+
+% Document
+\begin{document}
+%    Nagłówek
+    \begin{flushleft}
+        Filip Krauz-Damski 267 681 \hfill Data wykonania ćwiczenia:\\
+        Filip Kubecki 272 655 \hfill 15 kwietnia 2024r\\
+        \hfill Data sporządzenia sprawozdania:\\
+        Grupa: Pon 13:15 \hfill 20 kwietnia 2024r\\
+    \end{flushleft}
+    \begin{center}
+        \Large\textbf{Ćwiczenie 5.}\\
+        \textbf{Rejestracja i wyznaczanie parametrów
+        sygnałów okresowo zmiennych}
+    \end{center}
+    \vspace{1cm}
+
+%    Treść
+    \section{Spis przyrządów}
+    \par{
+        Do wykonania ćwiczenia wykorzystano:
+        \begin{itemize}
+            \setlength\itemsep{0em}
+            \item[-] Przenośny multimetr cyfrowy AX-588B
+            \item[-] Przenośny multimetr cyfrowy AX-MS8221A
+            \item[-] Multimetr cyfrowy Agilent 34401A
+            \item[-] Oscyloskop cyfrowy Agilent DSO3062A
+            \item[-] Generator funkcji Agilent 33220A
+        \end{itemize}
+    }
+    \section{Przebieg i cele doświadczeń}
+    Doświadczenie polegało kolejno na:
+    \begin{itemize}
+        \setlength\itemsep{0em}
+        \item Pomiarze wartości skutecznej napięcia dla sygnałów o różnym kształcie oraz różnej częstotliwości,
+        \item Zestawieniu układu pomiaru napięcia oraz natężenia zmiennego na rezystorze oraz zbadaniu czy dla przebiegów okresowo zmiennych zachodzi prawo Ohma,
+        \item Pomiarze częstotliwości oraz okresów sygnałów okresowo zmiennych,
+        \item Pomiarze przesunięcia fazowego na układzie opóźniającym,
+    \end{itemize}
+    \newpage
+
+    \section{Wyniki pomiarów}
+    \subsection*{Część 1 - Pomiar napięć zmiennych}
+    \begin{center}
+        \small{\textbf{Tabela 1 - AX-MS8221A funkcja Sinus}}
+    \end{center}
+    \begin{center}
+        \csvreader[tabular = |c|c|c|c|c|,
+            table head = \hline  \textbf{Częstotliwość[Hz]} & \textbf{$U_{opt}$[V]} & \textbf{$U_{opt+1}$[V]} & \textbf{$U_{scope}$[V]} & \textbf{$U_{RMS}$[V]} \\\hline,
+%            table foot = \hline,
+            late after line = \\\hline
+        ]{Dane/Dane1AXMS.csv}{}{
+            \csvcoli & \csvcolii & \csvcoliii & \csvcoliv & \csvcolv
+        }
+    \end{center}
+
+    \begin{center}
+        \small{\textbf{Tabela 2 - Agilent 34401A funkcja Sinus}}
+    \end{center}
+    \begin{center}
+        \csvreader[tabular = |c|c|c|c|c|,
+            table head = \hline  \textbf{Częstotliwość[Hz]} & \textbf{$U_{opt}$[V]} & \textbf{$U_{opt+1}$[V]} & \textbf{$U_{scope}$[V]} & \textbf{$U_{RMS}$[V]} \\\hline,
+%            table foot = \hline,
+            late after line = \\\hline
+        ]{Dane/Dane1Agilent.csv}{}{
+            \csvcoli & \csvcolii & \csvcoliii & \csvcoliv & \csvcolv
+        }
+    \end{center}
+
+    \begin{center}
+        \small{\textbf{Tabela 3 - AX-588V funkcja Sinus}}
+    \end{center}
+    \begin{center}
+        \csvreader[tabular = |c|c|c|c|c|,
+            table head = \hline  \textbf{Częstotliwość[Hz]} & \textbf{$U_{opt}$[V]} & \textbf{$U_{opt+1}$[V]} & \textbf{$U_{scope}$[V]} & \textbf{$U_{RMS}$[V]} \\\hline,
+%            table foot = \hline,
+            late after line = \\\hline
+        ]{Dane/Dane1AX588.csv}{}{
+            \csvcoli & \csvcolii & \csvcoliii & \csvcoliv & \csvcolv
+        }
+    \end{center}
+
+    \begin{center}
+        \small{\textbf{Tabela 4 - Funkcja: piła - Częstotliwość: 1[kHz]}}
+    \end{center}
+    \begin{center}
+        \csvreader[tabular = |c|c|c|c|c|,
+            table head = \hline  \textbf{Miernik} & \textbf{$U_{opt}$[V]} & \textbf{$U_{opt+1}$[V]} & \textbf{$U_{scope}$[V]} & \textbf{$U_{RMS}$[V]} \\\hline,
+%            table foot = \hline,
+            late after line = \\\hline
+        ]{Dane/Dane1Tri.csv}{}{
+            \csvcoli & \csvcolii & \csvcoliii & \csvcoliv & \csvcolv
+        }
+    \end{center}
+
+    \begin{center}
+        \small{\textbf{Tabela 5 - Funkcja: prostokąt - Częstotliwość: 1[kHz]}}
+    \end{center}
+    \begin{center}
+        \csvreader[tabular = |c|c|c|c|c|,
+            table head = \hline  \textbf{Miernik} & \textbf{$U_{opt}$[V]} & \textbf{$U_{opt+1}$[V]} & \textbf{$U_{scope}$[V]} & \textbf{$U_{RMS}$[V]} \\\hline,
+            late after line = \\\hline
+        ]{Dane/Dane1Sqr.csv}{}{
+            \csvcoli & \csvcolii & \csvcoliii & \csvcoliv & \csvcolv
+        }
+    \end{center}
+
+    \subsection*{Część 2 - Obwody prądu zmiennego}
+    \begin{center}
+        \small{\textbf{Tabela 6}}
+    \end{center}
+    \begin{center}
+        \csvreader[tabular = |c|c|c|c|c|c|,
+            table head = \hline  \textbf{Funkcja} & \textbf{Rezystor[$\Omega$]} & \textbf{U[V]} & \textbf{I[mA]} & \textbf{\boldmath$\frac{U}{I}$[$\Omega$]} & \textbf{\boldmath$u_c(\frac{U}{I})$[$\Omega$]} \\\hline,
+            late after line = \\\hline
+        ]{Dane/Dane2.csv}{}{
+            \csvcoli & \csvcolii & \csvcoliii & \csvcoliv & \csvcolv & \csvcolvi
+        }
+    \end{center}
+
+    \subsection*{Część 3 - Pomiar częstotliwości i okresu}
+    \begin{center}
+        \small{\textbf{Tabela 7}}
+    \end{center}
+    \begin{center}
+        \csvreader[tabular = |c|c|c|c|c|c|c|,
+            table head = \hline  \textbf{$f$[Hz]} & \textbf{$f_{agil}$[Hz]} & \textbf{$T_{agil}$[ms]} & \textbf{$u(f_{agil})$[Hz]} & \textbf{$u(T_{agil})$[ms]} & \textbf{$f_{588B}$[Hz]} & \textbf{$u(f_{588B})$[Hz]} \\\hline,
+            late after line = \\\hline
+        ]{Dane/Dane3.csv}{}{
+            \csvcoli & \csvcolii & \csvcoliii & \csvcoliv & \csvcolv & \csvcolvi & \csvcolvii
+        }
+    \end{center}
+
+    \subsection*{Część 4 - Pomiar przesunięcia fazowego}
+    \begin{center}
+        Sygnał 1[kHz] - przesunięcie fazowe: 132[$\mu$s]
+    \end{center}
+    \newpage
+    \section{Analiza wyników}
+    \subsection*{Część 1 - Pomiar napięć zmiennych}
+    Przy pomocy wszystkich mierników na stanowisku mierzono wartości napięcia RMS (Root Mean Square — średnia kwadratowa/wartość skuteczna),
+    kolejnych przebiegów. Na początku warto zaznaczyć zakresy poprawnego pomiaru wartości RMS napięcia zmiennego dla kolejnych miernikó:
+    \begin{itemize}
+        \item Agilent 34401A - od 3[Hz] do 300[kHz],
+        \item Axiomet AX-588B - od 40[Hz] do 400[Hz],
+        \item Axiomet AX-MS8221A - od 40[Hz] do 1[kHz],
+    \end{itemize}
+    \par Możemy od razu zauważyć, że dla pomiarów napięcia RMS sygnałów sinusoidalnych z zakresu 5[Hz] do 500[kHz] mierniki nie są w stanie zmierzyć wartości dla wszystkich sygnałów.
+    Najgorzej plasuje się miernik AX-588B, dla którego jedyny pomiar, jaki mieści się w jego zakresie pomiarowym to pomiar przy częstotliwości 100 [Hz]. Najlepiej w tym zestawieniu
+    pokazuje się miernik Agilent 34401A, dla którego jedyny pomiar, który wychodzi poza zakres pomiaru to pomiar przy częstotliwości 500 [kHz]. Miernik ten jednak pozwala na pomiary
+    do częstotliwości nawet 1[MHz] jednak przy tej wartości producent zaleca do przyjąć wartość niepewności na aż 30\%. Producent również nie podaje dokładnych niepewności dla pomiarów
+    powyżej 300[kHz].\\
+    \indent Wartość mierzona w tym doświadczeniu to wartość skuteczna napięcia RMS. Była ona mierzona dla trzech typów sygnałów: sinusoidalnego, piłokształtnego oraz prostokątnego.
+    Wartości poprawnych napięć zostały wyliczone korzystając z napięcia międzyszczytowego zmierzonego przy pomocy oscyloskopu (oznaczonego w tabelach jako $U_{scope}$). Wartość ta
+    została podstawiona do wzorów na wartość skuteczną napięcia kolejnych sygnałów. Wzory te zostały podane poniżej:
+    \subsubsection*{1. Sygnał Sinusoidalny}
+    \begin{gather*}
+        U_{RMS}=\frac{U_{pp}}{2sqrt{2}}\approx U_{pp}\cdot 0.35355\dots
+    \end{gather*}
+    Przykładowo dla sygnału sinusoidalnego o wartości międzyszczytowej 20.2[V]:
+    \begin{gather*}
+        U_{RMS}=20.2[V] \cdot 0.35355\dots=7.142\dots[V]
+    \end{gather*}
+
+    \subsubsection*{2. Sygnał Piłokształtny}
+    \begin{gather*}
+        U_{RMS}=\frac{U_{pp}}{2\sqrt{3}}\approx U_{pp}\cdot 0.2886\dots
+    \end{gather*}
+    Przykładowo dla sygnału piłokształtnego o wartości międzyszczytowej 20.2[V]:
+    \begin{gather*}
+        U_{RMS}=20.2[V] \cdot 0.2886\dots=5.831\dots[V]
+    \end{gather*}
+
+    \subsubsection*{3. Sygnał Prostokątny}
+    \begin{gather*}
+        U_{RMS}=U_{pp}\cdot 0.5
+    \end{gather*}
+    Przykładowo dla sygnału prostokątnego o wartości międzyszczytowej 20.4[V]:
+    \begin{gather*}
+        U_{RMS}=20.4[V] \cdot 0.5=10.2[V]
+    \end{gather*}
+
+    \noindent Wartości skuteczne zostały umieszczone w ostatniej kolumnie tabel 1 - 5.\\
+    \par Dla pomiarów nie zostały wyznaczone niepewności napięcia skutecznego ponieważ do poprawnej analizy należałoby wziąć pod uwagę wszystkie elementy układu takie jak:
+    niepewność miernika, niepewność odczytu oscyloskopu, impedancje dodane przez urządzenia pomiarowe, niepewności wynikająca z stabilizowania się wyników.\\
+    \indent Można zaobserwować że dla pomiarów dokonanych w zakresie operowania multimetrów zauważalna jest tendencja do zaniżania wyniku pomiaru dla zakresu o jeden wyższego niż optymalny.
+    Jedynie w przypadku miernika Agilent 34401A różnica między wynikiem na zakresie optymalnym a zakresem o jeden wyższym nie wykazuję tej tendencji. Wynika to prawdopodobnie z o
+    wiele bardziej zaawansowanego układu pomiarowego miernika.\\
+    \indent Mierniki wartości skutecznej dzielimy na mierniki True RMS oraz mierniki które wyliczają wartość skuteczną na podstawie wartości maksymalnej przebiegu rejestrowanego.
+    Jedyny miernik który nie jest miernikiem nie będącym miernikiem True RMS był miernik AX-MS8221A. Zgodnie z notą katalogową miernik ten oblicza wartość skuteczną dla sygnału
+    sinusoidalnego. Miernik ten powinien więc pokazywać poprawne wskazania dla sygnału sinusoidalnego jednak dla sygnału piłokształtnego oraz prostokątnego powinien pokazywać
+    błędne wyniki.\\
+    \indent Gdy porównamy wartości zmierzone sygnału piłokształtnego oraz prostokątnego do wartość RMS obliczonych na podstawie wartości międzyszczytowej zmierzonej oscyloskopem zauważamy
+    że wszystkie pomiary są zgodne w wartościami oczekiwanymi. Jednak miernik AX-MS8221A powinien wskazywać takie same wyniki jak dla sygnału sinusoidalnego gdyż nie mierzy on rzeczywistej
+    wartości skutecznej napięcia. Nie jesteśmy w stanie wyciągnąć dokładnego wzniosku dlaczego miernik ten pokazuje poprawne wyniki mimo iż wykorzystuję uproszczoną metodę. Aby lepiej
+    zrozumieć przyczyny tego zjawiska potrzebne byłyby dane na temat dokładnej metody obliczania wartości RMS przez ten miernik. Danych takich jednak producent nie podaje.
+    \newpage
+    \subsection*{Część 2 - Obwody prądu zmiennego}
+    Wykonano pomiary dwóch rezystancji (100 [$\Omega$] i 1000 [$\Omega$) metodą poprawnego pomiaru napięcia przy zasileniu układu napięciem zmiennym
+    o częstotliwości 1 [kHz] i o kształcie funkcji sinudoidalnej, piłokształtnej oraz prostokątnej. Mimo zastosowania metody poprawnego pomiaru napięcia w obliczeniach
+    nie uwzględniano prądu bocznikowanego przez woltomierz gdyż rezystancja wewnętrzna woltomierza (wynoszoąca 10[M$\Omega$]) była tak duża że wpływ na ostateczny wynik
+    był pomijalnie mały.\\
+    \indent Badanie miało za zadanie sprawdzić czy układy napięcia zmiennego zachowują prawo Ohma. Mierzono więc napięcie RMS na rezystorze oraz prąd wpływający do rezystora.
+    Rezystancja została wyliczona przy użyciu prawa Ohma:
+    \begin{gather*}
+        R=\frac{U}{I}
+    \end{gather*}
+    Przykładowo dla pomiaru na rezystorze 100 [$\Omega$] dla zasilania funkcją sinus:
+    \begin{gather*}
+        R=\frac{2.2767[V]}{22.9[mA]}=99.4192\dots [\Omega]]
+    \end{gather*}
+    \par Na podstawie pomiarów jesteśmy w stanie zauważyć że różnica między pomiarami a rezystancjami podanymi na rezystorach różni się dla niektórych pomiarów poza granicę niepewności pomiarowej.
+    Wynika to z nieuwzględnienia w niepewności tolerancji wykonania rezystorów na których były wkonywane pomiary. Płytki z rezystorami wykorzystane w ćwiczeniu
+    były już używane w innych ćwiczeniach a ich tolerancje wynosiły 5\%. Po dodaniu tego założenia widać że rezystancje pokrywają się z przewidywaniami w zakresie niepewności oraz tolerancji.
+    Wynikałoby z tego że prawo Ohma zachodzi również dla sygnałów zmiennych.\\
+    \indent Po zapoznaniu się z teorią widzimy że dla napięcia zmiennego prawo Ohma wyraża się wzorem:
+    \begin{gather*}
+        I=\frac{U}{Z}
+    \end{gather*}
+    \indent Możemy zauważyć że jest to praktycznie wzór jak dla prądu stałego jednak rezystancję R zastępuje nam impedancja Z. W przypadku naszego układu impedancja mierzona równa jest rezystancji
+    gdyż nie posiadamy elementów które posiadałyby reaktancję.
+    
+    \subsection*{Część 3 - Pomiar częstotliwości i okresu}
+    W ćwiczeniu zmierzono przy pomocy miernika Agilent 34401A (pomiary przy jego użyciu zaznaczone zostały w tabeli 7 przypisem $agil$) oraz AX-588A (oznaczonego przypisem $588A$)) zmierzono
+    częstotliwości sygnału sinusoidalnego o napięciu międzyszczytowym 1 [V]. Pomiary obejmowały częstotliwości od 1 [Hz] do 500 [kHz]. Poniżej przedstawiono zakresy pomiarowe wykorzystanych
+    mierników:
+    \begin{itemize}
+        \item Agilent 34401A - 3 [Hz] do 300 [kHz] (miernik umożliwia również pomiary poniżej 3 [Hz] jednak producent nie gwarantuje ich dokładności i nie podaje niepewności takich pomiarów),
+        \item AX-588B - 1 [Hz] do 10 [MHz],
+    \end{itemize}
+    \par W tabeli 7 zawierającej wyniki jesteśmy w stanie zauważyć że w przypadku miernika Agilent 34401A nie udało się zmierzyć najwyższej częstotliwości o wartości 500 [kHz]. Jest to spowodowane
+    przekroczeniem zakresu pomiarowego urządzenia.\\
+    \indent Można zauważyć że wszystkie pomiary mieszczą się w niepewnościach pomiarowych mierników. Obrazuje to rzetelność pomiarów wykonywanych miernikami. Dodatkowo można zauważyć
+    że miernik Agilent 34401A oferuje o wiele dokładniejsze pomiary niż miernik AX-588B. Miernik AX-588B jednak wygrywa szerokością zakresu pomiarowego która jest znacznie większa od
+    tego oferowanego przez miernik Agilent 34401A.\\\\
+    \indent Niepewności pomiaru częstotliwości oraz okresu dla miernika Agilent 34401A (obie wartości liczy się analogicznie), wyraża się wzorem:
+    \begin{gather*}
+        u(f)=\alpha\%\cdot rdg
+    \end{gather*}
+    {\footnotesize
+        \begin{itemize}
+            \setlength\itemsep{0em}
+            \item[] \boldmath$\alpha$ - współczynnik podany przez producenta,
+            \item[] \boldmath$rdg$ - wartość odczytana,
+        \end{itemize}}
+    \noindent Przykładowo dla pomiaru częstotliwości 500 [Hz]:
+    \begin{gather*}
+        u(f)=0.006\%\cdot 499.992 [Hz]=0.02999952 [Hz]\approx 0.030 [Hz]
+    \end{gather*}
+    \noindent Niepewności pomiaru częstotliwości dla miernika AX-588V:
+    \begin{gather*}
+        u(f)=\alpha\cdot rdg+ c\cdot X_{min}
+    \end{gather*}
+    {\footnotesize
+        \begin{itemize}
+            \setlength\itemsep{0em}
+            \item[] \boldmath$\alpha$ - współczynnik podany przez producenta,
+            \item[] \boldmath$rdg$ - wartość odczytana,
+            \item[] \boldmath$c$ - współczynnik podany przez producenta,
+            \item[] \boldmath$X_{min}$ -  rozdzielczość zakresu,
+        \end{itemize}}
+    \noindent Przykładowo dla pomiaru częstotliwości 500 [Hz]:
+    \begin{gather*}
+        u(f)=0.5\%\cdot 499.992 [Hz]+5\cdot 1 [Hz]=6.49[Hz]\approx 6.5 [Hz]
+    \end{gather*}
+    \newpage
+    \subsection*{Część 4 - Pomiar przesunięcia fazowego}
+    Przy pomocy oscyloskopu Agilent DSO3062A wyliczono przesunięcie fazowe sygnału sinusoidalnego o częstotliwości 1 [kHz] oraz wartości międzyszczytowej 1 [V]. Sygnał ten został
+    przepuszczony przez ścieżkę o czystej rezystancji oraz przez układ opóźniający składający się dodatkowo z kondensatora. Przesunięcie fazowe zostało wyznaczone na podstawie
+    przesunięcia w czasie punktu przecięcia osi x sygnału przesuniętego oraz nieprzesuniętego (w fazie rośnięcia sygnału sinusoidalnego).\\
+    \indent Wyznaczone przesunięcie fazowe wynosi: 132 [$\mu$ s].
+    Przesunięcie fazowe podajemy w jednostkach kątowych, potrzeba wiec wyliczyć o jaką część okresu sygnału o częstotliwość 1 [kHz] przesunięto sygnał. Należy najpierw obliczyć
+    okres sygnału. Wyliczymy go z poniżego wzoru:
+    \begin{gather*}
+        T=\frac{1}{f}=\frac{1}{1[kHz]}=1 [ms]=1000[\mu s]
+    \end{gather*}
+    Następnie wyliczamy przesunięcie fazowe ze wzorów:
+    \begin{gather*}
+        \varphi=360^{\circ}\cdot\frac{\tau}{T}=360^{\circ}\cdot\frac{132 [\mu s]}{1000 [\mu s]}=47.52 [^{\circ}]
+    \end{gather*}
+    lub dla wyniku w radianach:
+    \begin{gather*}
+        \varphi=2\pi\cdot\frac{\tau}{T}=2\pi\cdot\frac{132 [\mu s]}{1000 [\mu s]}=0.8293804\dots [rad]
+    \end{gather*}
+
+    \section{Uwagi i wnioski}
+    Z wykonanych ćwiczeń możemy wyciągnąć wiele wniosków przydatnych przy pracy z sygnałami okresowo zmiennymi. Z części 1 możemy wygciągnać 3 kluczowe wnioski:
+    \begin{itemize}
+        \item[1.] Należy zawsze dbać o wybranie najbardziej optymalnego zakresu pomiarowego dla pomiaru napięcia skutecznego aby uniknąć zaniżenia wyników,
+        \item[2.] Należy zapoznać się z notą katalogową miernika i sprawdzić dla jakich częstotliwości miernik potrafi wyznaczać wartość napięcia skutecznego,
+        \item[3.] W przypadku pomiarów sygnałów innych niż sygnały sinusoidalne, sprawdzić w nocie katalogowej czy nasz miernik na pewno oferuje pomiar true RMS,
+    \end{itemize}
+    \newpage
+    \indent Z części 2 możemy empirycznie zaobserwować że dla sygnałów okresowo zmiennych w układach o czystej rezystancji zostaje zachowane prawo Ohma. W ogólnym przypadku prawo Ohma dla
+    prądu zmiennego prawo Ohma przyjmuję postać:
+    \begin{gather*}
+        I=\frac{U}{Z}
+    \end{gather*}
+    Czyli rezystancja zostaje zastąpiona przez moduł impedancji.\\\\
+    \indent Z części 3 ćwiczenia jesteśmy w stanie zauważyć jak różne mierniki oferują różne atuty w przypadku pomiaru sygnałów okresowo zmiennych. Obrazuje nam to że przed przeprowadzeniem
+    doświadczenia należy zastanowić się dokładnie czy w danym pomiarze kluczowa jest dla nas dokładność pomiaru czy elastyczność wynikająca z szerokiego zakresu pomiarowego.\\
+    \indent Część 4 ćwiczenia obrazuje nam graficznie jaki wpływ na napięcie układu mają elementy posiadające kapacytancję. Przsunięcie fazowe może mieć negatywny wpływ na np.:
+    układy analogowe przetwarzające informacje dźwiękowe, może zwiększać straty energii przy przesyle prądu elektrycznego.
+
+    %Bibliografia
+    \vfill
+    \footnotesize
+    \begin{thebibliography}{9}
+        \bibitem{texbook1}
+        https://wzn.pwr.edu.pl/materialy-dydaktyczne/metrologia-elektroniczna
+        \bibitem{texbook2}
+        https://lpf.wppt.pwr.edu.pl/pomoce-dydaktyczne.php
+        \bibitem{texbook3}
+        https://www.falstad.com/
+        \bibitem{texbook4}
+        https://en.wikipedia.org/wiki/Root-mean-square
+        \bibitem{texbook5}
+        https://en.wikipedia.org/wiki/Phase-(waves)
+        \bibitem{texbook6}
+        https://en.wikipedia.org/wiki/Ohm\%27s-law
+    \end{thebibliography}
+
+\end{document}
