@@ -1,0 +1,4 @@
+Suwmiarka o dokładności pomiarowej: 0.05 mm
+Mikrometr o dokładności pomiarowej: 0.01 mm
+Waga o dokładności pomiarowej:      0.01 g
+Menzurka pomiarowa o dokładności:   1 ml

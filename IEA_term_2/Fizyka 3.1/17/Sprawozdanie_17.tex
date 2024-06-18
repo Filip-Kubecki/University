@@ -1,0 +1,263 @@
+%! Author = kubec
+%! Date = 06.03.2024
+
+% Preamble
+\documentclass[11pt]{article}
+
+% Packages
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{ragged2e}
+\usepackage [utf8]{inputenc}
+\usepackage{blindtext}
+\usepackage{wrapfig}
+\usepackage{xcolor}
+\usepackage {polski}
+\usepackage{multicol}
+\usepackage[a4paper, total={5.7in, 8in}]{geometry}
+\usepackage{graphicx}
+\usepackage{amstex}
+\usepackage{csvsimple}
+\usepackage{changepage}
+\usepackage{enumitem}
+\usepackage[english]{babel}
+\usepackage{biblatex}
+\usepackage{caption}
+
+\newenvironment{changemargin}[2]{%
+    \begin{list}{}{%
+        \setlength{\topsep}{0pt}%
+        \setlength{\leftmargin}{#1}%
+        \setlength{\rightmargin}{#2}%
+        \setlength{\listparindent}{\parindent}%
+        \setlength{\itemindent}{\parindent}%
+        \setlength{\parsep}{\parskip}%
+    }%
+        \item[]}{\end{list}}
+
+
+% Document
+\begin{document}
+    \begin{flushright}
+        \large{
+            Igor Czerwiec - 277680\\
+            Filip Kubecki - 272655
+        }\\
+    \end{flushright}
+    \begin{center}
+        \large{Fizyka 3.1}\\
+        \vspace{2mm}
+        \LARGE{\textbf{Wyznaczanie wartości przyśpieszenia ziemskiego}}\\
+        \vspace{3mm}
+        \huge{Nr ćwiczenia: 17}\\
+        \vspace{1cm}
+    \end{center}
+    \begin{flushright}
+        \large{
+            Data wykonania ćwiczenia: 14.03.2024r\\
+            Data oddania sprawozdania: 21.03.2024r
+        }\\
+    \end{flushright}
+
+    \section{Wstęp}
+    Celem zadania jest wyznaczenie stałej grawitacji przy
+    pomocy wahadła matematycznego oraz wahadła fizycznego.\\
+    \textbf{Wykorzystane przyrządy pomiarowe:}
+    \begin{itemize}
+        \itemsep0em
+        \item Waga laboratoryjna (błąd pomiarowy 0.1 g)
+        \item Suwmiarka (błąd pomiarowy 0.05 mm)
+        \item Stoper (błąd pomiarowy 0.01 s)
+        \item Przymiar (błąd pomiarowy 2 mm)
+    \end{itemize}
+%    \textbf{Przebieg doświadczenia:}
+%    \subsection*{Wahadło matematyczne}
+%    Eksperymentatorzy trzykrotnie wykonali pomiary czasu 100 wahnięć wahadła matematycznego przy różnych długościach ramienia wahadła.
+%    Whadało przy każdym pomiarze zostało wychylone o kąt około 8 stopni od pionu. Z zebranych danych
+
+    \section{Dane}
+    \subsection*{Niepewności}
+    Wartość niepewności $u(n)$ została podniesiona z 1 do 2 z powodu niedokładności w liczeniu wahnięć przez eksperymentatorów.
+    \subsection*{Wahadło matematyczne}
+    \begin{center}
+        \csvreader[tabular = |c|c|c|c|,
+            table head = \hline \textbf{L[mm]} & \textbf{n} & \textbf{\boldmath$t_i$[s]} & \textbf{\boldmath$\Delta$t[s]}\\\hline,
+            late after line = \\\hline
+        ]{WahadloMatematyczne1.csv}{}{
+            \csvcoli & \csvcolii & \csvcoliii & \csvcoliv
+        }
+    \end{center}
+    \subsection*{Wahadło fizyczne}
+    \begin{center}
+        \csvreader[tabular = |c|c|c|c|c|c|c|,
+            table head = \hline \textbf{Masa[g]} & \textbf{d[mm]} & \textbf{D[mm]} & \textbf{I[\boldmath$kgm^2$]}& \textbf{n}& \textbf{\boldmath$t_i$[s]}& \textbf{\boldmath$\Delta$t[s]}\\\hline,
+            late after line = \\\hline
+        ]{WahadloFizyczne1.csv}{}{
+            \csvcoli & \csvcolii & \csvcoliii & \csvcoliv & \csvcolv & \csvcolvi & \csvcolvii
+        }
+    \end{center}
+
+    \section{Obliczenia}
+    \noindent Niepewnosć standardową typu A (niepewność statystyczna) obliczamy ze wzoru:
+    \begin{gather*}
+        u_{a}(x)=\sqrt{\frac{\sum_{i=1}^n (x_i-\hat{x})^2}{n(n-1)}}
+    \end{gather*}
+    {\footnotesize
+        \begin{itemize}
+            \item[] $x_i$ - kolejne pomiary danej wartości,
+            \item[] $\hat{x}$ - średnia z wartości $x_i$,
+            \item[] $\hat{n}$ - ilość pomiarów,
+        \end{itemize}}
+    \noindent Przykładowo dla pomiaru okresu 100 wahnięć wahadła matematycznego:
+    \begin{gather*}
+        u_{a}(x)=\sqrt{\frac{(147.1-144.173)^2+(144.54 -144.173)^2+(140.88 -144.173)^2}{6}}=\\
+        =1.80489458[s]\approx 1.8[s]
+    \end{gather*}
+
+    \noindent Niepewność pomiarową typu b (niepewność szacowana) obliczamy ze wzoru:
+    \begin{gather*}
+        u_b(\Delta)=\sqrt{\sum_{i=1}^{n}\frac{(\Delta_i)^2}{3}}
+    \end{gather*}
+    {\footnotesize
+        \begin{itemize}
+            \item[] $\Delta_i$ - kolejne błędy pomiarowe np: przyrządu, obserwatora,odczytu wartości tablicowych itd,
+        \end{itemize}}
+    \noindent Przykładowo dla niepewności pomiarowej pomiaru czasu stoperem(błąd stopera i eksperymentatora):
+    \begin{gather*}
+        u_b(t)=\sqrt{\frac{(0.01)^2}{3}+\frac{(0.362)^2}{3}}=0.209080527[s]\approx 0.21[s]
+    \end{gather*}
+
+    \noindent Niepewność całkowita wyraża się wzorem:
+    \begin{gather*}
+        u(x)=\sqrt{u_a^2(x)+u_b^2(x)}
+    \end{gather*}
+
+    \noindent Na przykładzie niepewności całkowitej pomiaru czasu:
+    \begin{gather*}
+        u(T)=\sqrt{1.8048^2+0.209^2}=1.816964257[s]\approx 1.8[s]
+    \end{gather*}
+    \noindent Okres wahadła:
+    \begin{gather*}
+        T=\frac{\Delta t}{n}
+    \end{gather*}
+    {\footnotesize
+        \begin{itemize}
+            \item[] $\Delta t$ - średni czas n wahnięć wahadła,
+            \item[] $n$ - ilość wahnieć wahadła,
+        \end{itemize}}
+
+    \noindent Niepewność rozszerzona okresu wahadła $T$:
+    \begin{gather*}
+        u_c(T)=\sqrt{\left(\frac{\partial f_T}{\partial \Delta t}\right)^2u^2(\Delta t)+\left(\frac{\partial f_T}{\partial n}\right)^2 u^2(n)}
+    \end{gather*}
+
+    \subsection{Wahadło matematyczne}
+    \noindent Stałą grawitacji dla wahadła matematycznego wyliczamy ze wzoru:
+    \begin{gather*}
+        g = 4\pi^2 \frac{l}{T^2}
+    \end{gather*}
+    {\footnotesize\begin{itemize}
+         \setlength\itemsep{0.1em}
+         \item[] $g$ - Przyspieszenie ziemskie,
+         \item[] $T$ - Średni okres drgań,
+         \item[] $l$ - Długość wahadła.
+    \end{itemize}}
+
+    \noindent Niepewność złożoną dla wzoru na stałą grawitacji wyliczamy ze wzoru:
+    \begin{gather*}
+        u_c(g) = \sqrt{\left (\frac{\partial f_g}{\partial l}\right )^2u^2(l)+\left (\frac{\partial f_g}{\partial T}\right )^2u^2(T)} = \sqrt{\frac{16pi^4}{T^4}u^2(l)-\frac{64pi^4l^2}{T^6}u^2(T)}
+    \end{gather*}
+
+    \subsection{Wahadło fizyczne (pierścień metalowy)}
+    \noindent Moment bezwładności metalowego pierścienia obliczamy ze wzoru:
+    \begin{gather*}
+        I = I_0 + m \frac{d^2}{4}
+    \end{gather*}
+    {\footnotesize\begin{itemize}
+         \setlength\itemsep{0.1em}
+         \item[] $I$ - Moment bezwładności,względem osi obrotu
+         \item[] $I_0$ - Moment bezwładności pierścienia względem osi przechodzącej przez środek masy,
+         \item[] $m$ - Masa pierścienia.
+         \item[] $d$ - Średnica wewnętrzna
+    \end{itemize}}
+    \noindent Niewpewnosć złożoną momentu bezwładności metalowego pierścienia wyliczamy ze wzoru:
+    \begin{gather*}
+        u_c(I) = \sqrt{\left (\frac{\partial f_I}{\partial I_0}\right )^2u^2(I_0)+\left (\frac{\partial f_I}{\partial m}\right )^2u^2(m) + \left (\frac{\partial f_I}{\partial d}\right )^2u^2(d)} = \\ \sqrt{u^2(I_0) + \frac{m^2d^2}{4}u^2(m) + \frac{d^4}{16}u^2(d)}
+    \end{gather*}
+
+    \noindent Moment bezwładności metalowego pierścienia dla osi obrotu przechodzącej przez środek jego masy wyliczamy ze wzoru:
+    \begin{gather*}
+        I_0 = \frac{1}{8}m(d^2 + D^2)
+    \end{gather*}
+    {\footnotesize\begin{itemize}
+         \setlength\itemsep{0.1em}
+         \item[] $I_0$ - Moment bezwładności pierścienia względem osi przechodzącej przez środek masy,
+         \item[] $m$ - Masa pierścienia,
+         \item[] $d$ - Średnica wewnętrzna,
+         \item[] $D$ - Średnica zewnętrzna,
+    \end{itemize}}
+    \noindent Niepewnosć złożona momentu bezwładności metalowego pierścienia w osi obrotu przechodzącej przez środek jego masy wyliczamy ze wzoru:
+    \begin{gather*}
+        u_c(I_0) = \sqrt{\left (\frac{\partial I_0}{\partial D}\right )^2u^2(D)+\left (\frac{\partial I_0}{\partial m}\right )^2u^2(m) + \left (\frac{\partial I_0}{\partial d}\right )^2u^2(d)} = \\\sqrt{\frac{d^4+d^2D^2+D^4}{64}u^2(m) + \frac{m^2d^2}{16}u^2(d) + \frac{m^2D^2}{16}u^2(D)}
+    \end{gather*}
+
+    \newpage
+    \noindent Stałą grawitacji dla wahadła fizycznego obliczamy z zależności:
+    \begin{gather*}
+        g = 8\pi^2 \frac{I}{T^2md}
+    \end{gather*}
+    {\footnotesize\begin{itemize}
+         \setlength\itemsep{0.1em}
+         \item[] $g$ - Przyspieszenie ziemskie,
+         \item[] $I$ - Moment bezwładności,względem osi obrotu przechodzącej przez środek masy,
+         \item[] $T$ - Średni okres drgań,
+         \item[] $m$ - Masa pierścienia.
+         \item[] $d$ - Średnica wewnętrzna
+    \end{itemize}}
+
+    \noindent Niepewność rozszerzoną dla wzoru na stałą grawitacji wahadła fizycznego wyliczamy z poniższej zależności:
+    \begin{gather*}
+        u_c(g) = \sqrt{\left (\frac{\partial f_g}{\partial I}\right )^2u^2(I)+\left (\frac{\partial f_g}{\partial T}\right )^2u^2(T) +\left (\frac{\partial f_g}{\partial m}\right )^2u^2(m) + \left (\frac{\partial f_g}{\partial d}\right )^2u^2(d)} = \\\sqrt{\frac{64pi^4}{T^4m^2d^2}u^2(I) + \frac{256pi^4I^2}{T^6m^2d^2}u^2(T) + \frac{64pi^4I^2}{T^4m^4d^2}u^2(m) +\frac{64pi^4}{T^4m^2d^4}u^2(d)}
+    \end{gather*}
+    \vspace{1cm}
+    \section{Wyniki}
+    \subsection*{Wahadło matematyczne}
+    \begin{changemargin}{-3cm}{-3cm}
+        \begin{center}
+            \csvreader[tabular = |c|c|c|c|c|c|c|c|c|c|,
+                table head = \hline  \textbf{\boldmath$\Delta t_1$[s]} & \textbf{\boldmath$u_a(t_i)$[s]} & \textbf{\boldmath$u_b(t_i)$[s]} & \textbf{\boldmath$u(t_i)$[s]} & \textbf{T[s]} & \textbf{\boldmath$u_c(T)$[s]} & \textbf{g[\boldmath$\frac{m}{s^2}$]} & \textbf{\boldmath$u_c(g)$[\boldmath$\frac{m}{s^2}$]} & \textbf{\boldmath$\Delta$g[\boldmath$\frac{m}{s^2}$]} & \textbf{\boldmath$\Delta u_c(g)$[\boldmath$\frac{m}{s^2}$]} \\\hline,
+                late after line = \\\hline
+            ]{Wyniki1.csv}{}{
+                \csvcoli & \csvcolii & \csvcoliii & \csvcoliv & \csvcolv & \csvcolvi & \csvcolvii & \csvcolviii & \csvcolix & \csvcolx
+            }
+        \end{center}
+    \end{changemargin}
+    \subsection*{Wahadło fizyczne}
+    \begin{changemargin}{-3cm}{-3cm}
+    \begin{center}
+        \csvreader[tabular = |c|c|c|c|c|c|c|c|c|,
+            table head = \hline \textbf{\boldmath$u_c$(T)[s]} & \textbf{u(m)[g]} & \textbf{u(d)[mm]} & \textbf{\boldmath$I_0$[\boldmath$kgm^2$]} & \textbf{\boldmath$u_c(I_0)$[\boldmath$kgm^2$]} &  \textbf{I[\boldmath$kgm^2$]} & \textbf{\boldmath$u_c(I_0)$[\boldmath$kgm^2$]} & \textbf{g[\boldmath$\frac{m}{s^2}$]} & \textbf{\boldmath$u_c(g)$[\boldmath$\frac{m}{s^2}$]}  \\\hline,
+            late after line = \\\hline
+        ]{Wyniki2.csv}{}{
+            \csvcoli & \csvcolii & \csvcoliii & \csvcoliv & \csvcolv & \csvcolvi & \csvcolvii & \csvcolviii & \csvcolix
+        }
+    \end{center}
+    \end{changemargin}
+    \newpage
+    \section{Wnioski}
+    \subsection*{Wahadło matematyczne}
+    Z otrzymanych wyników trzech przyśpieszeń ziemskich możemy zauważyć, że wszystkie nie mieszczą
+    się w granicach błędu i są dość odległe od przewidywanej wartości około $9.80665\frac{m}{s^2}$.
+    Wynika to prawdopodobnie z wielu niejednolitości w przeprowadzaniu eksperymentu np:
+    \begin{itemize}
+        \item braku precyzyjnego określenia kąta wychylenia wahadła od pionu,
+        \item błędów przy liczeniu ilości wychyleń wahadła,
+        \item wolnego czasu reakcji eksperymentatora obsługującego stoper,
+    \end{itemize}
+    Można jednak zaobserwować tendencję malejącą w przypadku błędu obliczania przyśpieszenia ziemskiego wraz ze spadkiem długości wahadła matematycznego.
+    Sugerowane byłoby więc, aby dla poprawienia pomiarów używać wahadła o krótkim ramieniu.\\
+    \subsection*{Wahadło fizyczne}
+    W przypadku drugiej części eksperymentu uzyskano zadowalające wyniki. Otrzymana wartość $9.71\pm 0.39[\frac{m}{s^2}]$ mieści się w zakresie oczekiwanej wartości.
+    Świadczy to o wiele większej dokładności oraz przewidywalności drugiej metody wyznaczania  przyśpieszenia ziemskiego nad metodą wykorzystującą wahadło matematyczne.
+
+\end{document}

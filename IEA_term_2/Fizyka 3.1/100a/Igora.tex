@@ -1,0 +1,185 @@
+%! Author = kubec
+%! Date = 06.03.2024
+
+% Preamble
+\documentclass[11pt]{article}
+
+% Packages
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{ragged2e}
+\usepackage [utf8]{inputenc}
+\usepackage{blindtext}
+\usepackage{wrapfig}
+\usepackage{xcolor}
+\usepackage [backend=biber]{biblatex}
+\usepackage {polski}
+\usepackage{multicol}
+\usepackage[a4paper, total={5.7in, 8in}]{geometry}
+\usepackage{graphicx}
+\usepackage{amstex}
+
+% Document
+\begin{document}
+%    Tytuł
+    \begin{flushright}
+        \large{
+            Igor Czerwiec - 277680\\
+            Filip Kubecki - 272655
+        }\\
+    \end{flushright}
+    \begin{center}
+        \large{Fizyka 3.1}\\
+        \vspace{2mm}
+        \LARGE{\textbf{Wyznaczanie gęstości ciał stałych}}\\
+        \vspace{3mm}
+        \huge{Nr ćwiczenia: 100a}\\
+        \vspace{1cm}
+    \end{center}
+    \begin{flushright}
+        \large{
+            Data wykonania ćwiczenia: 07.03.2024r\\
+            Data oddania sprawozdania: xx.xx.xxxx
+        }\\
+    \end{flushright}
+%    Część główna
+    \section{Wstęp}
+    Gęstość substancji jest to masa substancji dzielona przez jej objętość. Celem zadania jest zbadaniae gęstości dwóch obiektów. Do wykonania zadania niezbędne jest policzenie objętości tych obiektów oraz złożonej niepewności pomiarowej objętości, używając ich wymiarów. Wymiary są mierzone suwmiarkami oraz mikrometrami.  Ostatnim celem zadania jest policzenie niepewności pomiarowej złożonej dla gęstości.
+    \section{Obliczenia}
+    \subsection{Cylinder}
+    \noindent Niepewność pomiarowa suwmiarki:
+    \begin{gather*}
+        u_b(\Delta_s)=\sqrt{\frac{(\Delta_s)^2}{3}}=\sqrt{\frac{(0.05[mm])^2}{3}}=0.0288675\dots[mm]\approx 0.029[mm]
+    \end{gather*}
+    {\footnotesize
+        \begin{itemize}
+            \item[] $\Delta_s$ - bład pomiarowy suwmiarki,
+        \end{itemize}}
+    \noindent Niepewność pomiarowa mikrometra:
+    \begin{gather*}
+        u_b(\Delta_m)=\sqrt{\frac{(\Delta_m)^2}{3}}=\sqrt{\frac{(0.01[mm])^2}{3}}=0.00577350\dots[mm]\approx 0.0058[mm]
+    \end{gather*}
+    {\footnotesize
+        \begin{itemize}
+            \item[] $\Delta_m$ - bład pomiarowy mikrometra,
+        \end{itemize}}
+    \noindent Niepewność pomiarowa wagi:
+    \begin{gather*}
+        u_b(\Delta_w)=\sqrt{\frac{(\Delta_w)^2}{3}}=\sqrt{\frac{(0.01[g])^2}{3}}=0.00577350\dots[g]\approx 0.0058[g]
+    \end{gather*}
+    {\footnotesize
+        \begin{itemize}
+            \item[] $\Delta_w$ - bład pomiarowy wagi,
+        \end{itemize}}
+    \noindent Niepewność statystyczna:
+    \begin{gather*}
+        u_a(x)=\sqrt{\frac{\sum_{i=1}^n(x_i-\hat{x})^2}{n(n-1)}}
+    \end{gather*}
+    \noindent Niepewność całkowita:
+    \begin{gather*}
+        u_c(x)=\sqrt{u_a^2(x)+u_b^2(x)}
+    \end{gather*}
+    \noindent Objętość cylindra:
+    \begin{gather*}
+        V = \pi L(R^2 -r^2)
+    \end{gather*}
+    {
+        \begin{itemize}
+            \setlength\itemsep{0.1em}
+            \item[] $V$ - objętość wałka,
+            \item[] $L$ - Średni pomiar długości,
+            \item[] $R$ - Średni pomiar promienia zewnętrznego,
+            \item[] $r$ - Średni pomiar promienia wewnętrznego,
+        \end{itemize}
+    }
+    \noindent Podstawiając dane:
+    \begin{gather*}
+        V =  36.06\pi(8.014^2 - 5.79^2)=3476.12275[mm^3]\approx 3.48 [ml]
+    \end{gather*}
+    \noindent Niepewność pomiarowa objętości cylindra:
+    \begin{gather*}
+        u(V) = \sqrt{\biggl(\frac{\partial V}{\partial L}\biggr)^2 u_c^2(L)+
+                {\biggl(\frac{\partial V}{\partial r}\biggr)^2 u_c^2(r)}+
+                { \biggl(\frac{\partial V}{\partial R}\biggr)^2 u_c^2(R)}+}=\\
+        =\sqrt{{ \biggl( \pi(R^2 - r^2) \biggr)^2 u__c^2(L)}+
+                {\biggl(-2Lr\pi \biggr)^2 u_c^2(r)}+
+                {\biggl(2LR\pi \biggr)^2 u_c^2(R)}+}=\\
+        =124,3466007[mm^3]\approx 0.12[ml]
+    \end{gather*}
+    \noindent Niepewność pomiarowa gęstości cylindra:
+    \begin{gather*}
+        u(\rho)=\sqrt{\biggl(\frac{\partial \rho}{\partial m}\biggr)^2u_b^2(m)+
+        \biggl(\frac{\partial \rho}{\partial V}\biggr)^2u^2(V)}
+        =\sqrt{\biggl(\frac{1}{V} \biggr)^2u_b^2(m)+
+        \biggl(\frac{m}{V^2}\biggr)^2u^2(V)}=\\
+        =\sqrt{\biggl(\frac{1}{3476} \biggr)^2 0.0058^2+
+        \biggl(\frac{8.71}{3476^2}\biggr)^2 124^2}=0.00146552[\frac{g}{mm^3}]=\\
+        =0,0000894038[\frac{g}{mm^3}]\approx 0.000089[\frac{g}{mm^3}]= 89 [\frac{kg}{m^3}]
+    \end{gather*}
+
+%    1. Cylinder\\
+%    1.1 Obliczenie objętości\\
+%    1.2 Obliczenie błędu pomiarowego objętości(Niepewność złożona)\\
+%    1.3 Obliczenie gęstości\\
+%    1.4 Obliczenie błędu pomiarowego gęstości(Niepewność złożona)\\ \\
+    \subsection{Wałek}
+    \noindent Objętość wałka dana jest wzorem:
+    \begin{align*}
+        V =  \sum_{n=1}^{5}(l_n\pi {r_{n}}^2)-l_x\pi {r_{x}}^2
+    \end{align*}
+    {
+        \footnotesize
+        \begin{itemize}
+            \setlength\itemsep{0.1em}
+            \item[] $V$ - objętość wałka,
+            \item[] $l_n/l_x$ - kolejne pomiary długości,
+            \item[] $r_n/r_x$ - kolejne pomiary promienia,
+        \end{itemize}
+    }
+    \noindent Niepewność pomiarowa objętości wałka:
+    \begin{gather*}
+        u(V) = \sqrt{\sum_{n=1}^{5} \biggl(\frac{\partial V}{\partial l_n}\biggr)^2 u_c^2(l_n)+
+                {\sum_{n=1}^{5} \biggl(\frac{\partial V}{\partial r_n}\biggr)^2 u_c^2(r_n)}+
+                { \biggl(\frac{\partial V}{\partial l_x}\biggr)^2 u_c^2(l_x)}+
+                { \biggl(\frac{\partial V}{\partial r_x}\biggr)^2 u_c^2(r_x)}}=\\
+        =\sqrt{ \sum_{n=1}^{5} { \biggl( \pi {r_n}^2 \biggr)^2 u_c^2(r_n)}+
+                { \sum_{n=1}^{5} { \biggl( l_n \pi \biggr)^2 u__c^2(l_n)}}+
+                { \biggl(  \pi {r_x}^2 \biggr)^2 u_c^2(r_x)}+
+                { \biggl( l_x \pi  \biggr)^2 u_c^2(l_x)}}=\\
+        =34.25533[mm^3]\approx 0.034 [ml]
+    \end{gather*}
+    \noindent Gęstość wałka:
+    \begin{gather*}
+        \rho=\frac{m}{V}
+    \end{gather*}
+    {
+        \footnotesize
+        \begin{itemize}
+            \setlength\itemsep{0.1em}
+            \item[] $\rho$ - gęstość wałka,
+            \item[] $V$ - objętość wałka,
+            \item[] $m$ - masa wałka,
+        \end{itemize}
+    }
+    \begin{gather*}
+        \rho=\frac{m}{V}=\frac{64.85[g]}{23200[mm^3]}=0.002795[\frac{g}{mm^3}]=2795[\frac{kg}{m^3}]
+    \end{gather*}
+    Niepewność pomiarowa gęstości:
+    \begin{gather*}
+        u(\rho)=\sqrt{\biggl(\frac{\partial \rho}{\partial m}\biggr)^2u_b^2(m)+
+        \biggl(\frac{\partial \rho}{\partial V}\biggr)^2u^2(V)}
+        =\sqrt{\biggl(\frac{1}{V} \biggr)^2u_b^2(m)+
+        \biggl(\frac{m}{V^2}\biggr)^2u^2(V)}=\\
+        =\sqrt{\biggl(\frac{1}{23200} \biggr)^2 0.0058^2+
+        \biggl(\frac{64.85}{23200^2}\biggr)^2 34^2}=0.00146552[\frac{g}{mm^3}]=\\
+        =0.00000410412[\frac{g}{mm^3}]\approx 0.0000041[\frac{g}{mm^3}]= 4.1[\frac{kg}{m^3}]
+    \end{gather*}
+%    2 Wałek\\
+%    2.1 Obliczenie objętości\\
+%    2.2 Obliczenie błędu pomiarowego objętości(Niepewność złożona)\\
+%    2.3 Obliczenie gęstości\\
+%    2.4 Obliczenie błędu pomiarowego gęstości(Niepewność złożona)\\
+    \section{Wnioski}
+    Porównanie wyników do danych tablicowych (czyli z neta) oraz wnioski wyciągnięte z doświadczenia
+
+\end{document}
