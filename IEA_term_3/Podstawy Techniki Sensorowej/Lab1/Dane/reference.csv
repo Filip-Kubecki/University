@@ -1,0 +1,4 @@
+Comment,Rpt100[Ohm],Tpth100[C],Rtherm[kOhm],epsil[mV]
+Hot refrence,138.503,100,,
+Cold refrence,100.080,0,31.999,1
+Room refrence,109.642,24.761,9.9584,0.021
