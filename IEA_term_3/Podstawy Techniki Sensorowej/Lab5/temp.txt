@@ -1,0 +1,28 @@
+# CAPACITANCE
+dataFilter <- subset(data, data$Time.s. > 70 & data$Time.s. < 2100)
+dataFilter <- dataFilter[!(dataFilter$Value>1.76e-10),]
+dataCap <- dataFilter[!(dataFilter$Value<0),]
+
+plot(dataCap$Time.s., dataCap$Value,
+     pch = 20
+)
+
+# IMPEDANCYJNY
+dataImp <- subset(data, data$Time.s. > 2400 & data$Time.s. < 2900)
+dataImp <- dataImp[!(dataImp$Value>9e-9),]
+
+# Regression
+regressionData <- subset(dataImp, dataImp$Time.s. > 2460 & dataImp$Time.s. < 2700)
+regression <- lm(regressionData$Value~regressionData$Time.s.)
+
+plot(dataImp$Time.s., dataImp$Value,
+     pch = 20,
+     xlab="Time [s]",
+     ylab="Capacitance [nF]"
+)
+title(main = "Czujnik Impedancyjny")
+grid(nx = NULL, ny = NULL,
+     lty = 2,      # Grid line type
+     col = "gray", # Grid line color
+     lwd = 2)      # Grid line width
+abline(regression)
